@@ -1,0 +1,2 @@
+# Outliers
+Manejo de Outliers

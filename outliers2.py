@@ -10,19 +10,19 @@ valores_nulos = df.isnull().sum()
 
 
 fig = plt.figure(figsize =(7, 3))
-plt.hist(x=df["ventas_precios_corrientes"], color='red', rwidth=0.50)
-plt.title('Histograma de ventas_precios_corrientes con outliers')
-plt.xlabel('ventas_precios_corrientes')
+plt.hist(x=df["salon_ventas"], color='red', rwidth=0.50)
+plt.title('Histograma de Salon Ventas con outliers')
+plt.xlabel('Salon Ventas')
 plt.ylabel('Frecuencia')
 plt.show()
 
 fig = plt.figure(figsize =(5, 3))
-plt.boxplot(df["ventas_precios_corrientes"]) 
-plt.title("Outliers de ventas_precios_corrientes")
+plt.boxplot(df["salon_ventas"]) 
+plt.title("Outliers de Salon Ventas")
 plt.show()
 
 #Usar cuartiles
-y=df["ventas_precios_corrientes"]
+y=df["salon_ventas"]
 print(y)
 
 p25=y.quantile(0.25) 
@@ -42,18 +42,18 @@ data_clean_iqr= df[(y<Limite_Superior_iqr)&(y>Limite_Inferior_iqr)]
 print(data_clean_iqr.head(5))          
 
 fig = plt.figure(figsize =(5, 3))
-plt.boxplot(data_clean_iqr["ventas_precios_corrientes"]) 
-plt.title("Ventas_precios_corriente sin outliers")
+plt.boxplot(data_clean_iqr["salon_ventas"]) 
+plt.title("Salon Ventas sin outliers ")
 plt.show()
 
 fig = plt.figure(figsize =(7, 3))
-plt.hist(x=data_clean_iqr["ventas_precios_corrientes"], color='blue', rwidth=0.50)
-plt.title('Histograma de ventas_precios_corrientes sin outliers')
-plt.xlabel('ventas_precios_corrientes')
+plt.hist(x=data_clean_iqr["salon_ventas"], color='blue', rwidth=0.50)
+plt.title('Histograma de Salon Ventas sin outliers')
+plt.xlabel('Salon Ventas')
 plt.ylabel('Frecuencia')
 plt.show()
 
-y=df["ventas_precios_corrientes"]
+y=df["salon_ventas"]
 Limite_Superior= y.mean() + 3*y.std()
 Limite_Inferior= y.mean() - 3*y.std()
 print("Limite superior permitido", Limite_Superior)
@@ -64,16 +64,15 @@ data_clean_de= df[(y<Limite_Superior)&(y>Limite_Inferior)]
 print(data_clean_de.head(5))          
 
 fig = plt.figure(figsize =(5, 3))
-plt.boxplot(data_clean_de["ventas_precios_corrientes"]) 
-plt.title("Outliers de ventas_precios_corriente - DE")
+plt.boxplot(data_clean_de["salon_ventas"]) 
+plt.title("Outliers de Salon Ventas - DE")
 plt.show()
 
 fig = plt.figure(figsize =(7, 3))
-plt.hist(x=data_clean_de["ventas_precios_corrientes"], color='blue', rwidth=0.50)
-plt.title('Histograma de ventas_precios_corrientes con outliers -DE')
-plt.xlabel('ventas_precios_corrientes')
+plt.hist(x=data_clean_de["salon_ventas"], color='blue', rwidth=0.50)
+plt.title('Histograma de Salon Ventas sin outliers -DE')
+plt.xlabel('Salon Ventas')
 plt.ylabel('Frecuencia')
 plt.show()
 
-data_clean_iqr["ventas_precios_corrientes"].to_csv('precios_corrientes_clean.csv')
-
+data_clean_iqr["salon_ventas"].to_csv('salon_ventas_clean.csv')

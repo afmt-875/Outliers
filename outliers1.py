@@ -10,19 +10,19 @@ valores_nulos = df.isnull().sum()
 
 
 fig = plt.figure(figsize =(7, 3))
-plt.hist(x=df["ventas_precios_corrientes"], color='red', rwidth=0.50)
-plt.title('Histograma de ventas_precios_corrientes con outliers')
-plt.xlabel('ventas_precios_corrientes')
+plt.hist(x=df["ventas_precios_constantes"], color='red', rwidth=0.50)
+plt.title('Histograma de Precios Constantes con outliers')
+plt.xlabel('Precios Constantes')
 plt.ylabel('Frecuencia')
 plt.show()
 
 fig = plt.figure(figsize =(5, 3))
-plt.boxplot(df["ventas_precios_corrientes"]) 
-plt.title("Outliers de ventas_precios_corrientes")
+plt.boxplot(df["ventas_precios_constantes"]) 
+plt.title("Outliers de Precios Constantes")
 plt.show()
 
 #Usar cuartiles
-y=df["ventas_precios_corrientes"]
+y=df["ventas_precios_constantes"]
 print(y)
 
 p25=y.quantile(0.25) 
@@ -42,18 +42,18 @@ data_clean_iqr= df[(y<Limite_Superior_iqr)&(y>Limite_Inferior_iqr)]
 print(data_clean_iqr.head(5))          
 
 fig = plt.figure(figsize =(5, 3))
-plt.boxplot(data_clean_iqr["ventas_precios_corrientes"]) 
-plt.title("Ventas_precios_corriente sin outliers")
+plt.boxplot(data_clean_iqr["ventas_precios_constantes"]) 
+plt.title("Precios Constantes sin outliers ")
 plt.show()
 
 fig = plt.figure(figsize =(7, 3))
-plt.hist(x=data_clean_iqr["ventas_precios_corrientes"], color='blue', rwidth=0.50)
-plt.title('Histograma de ventas_precios_corrientes sin outliers')
-plt.xlabel('ventas_precios_corrientes')
+plt.hist(x=data_clean_iqr["ventas_precios_constantes"], color='blue', rwidth=0.50)
+plt.title('Histograma de Precios Constantes sin outliers')
+plt.xlabel('Precios Constantes')
 plt.ylabel('Frecuencia')
 plt.show()
 
-y=df["ventas_precios_corrientes"]
+y=df["ventas_precios_constantes"]
 Limite_Superior= y.mean() + 3*y.std()
 Limite_Inferior= y.mean() - 3*y.std()
 print("Limite superior permitido", Limite_Superior)
@@ -64,16 +64,15 @@ data_clean_de= df[(y<Limite_Superior)&(y>Limite_Inferior)]
 print(data_clean_de.head(5))          
 
 fig = plt.figure(figsize =(5, 3))
-plt.boxplot(data_clean_de["ventas_precios_corrientes"]) 
-plt.title("Outliers de ventas_precios_corriente - DE")
+plt.boxplot(data_clean_de["ventas_precios_constantes"]) 
+plt.title("Outliers de Precios Constantes - DE")
 plt.show()
 
 fig = plt.figure(figsize =(7, 3))
-plt.hist(x=data_clean_de["ventas_precios_corrientes"], color='blue', rwidth=0.50)
-plt.title('Histograma de ventas_precios_corrientes con outliers -DE')
-plt.xlabel('ventas_precios_corrientes')
+plt.hist(x=data_clean_de["ventas_precios_constantes"], color='blue', rwidth=0.50)
+plt.title('Histograma de Precios Constantes sin outliers -DE')
+plt.xlabel('Precios Constantes')
 plt.ylabel('Frecuencia')
 plt.show()
 
-data_clean_iqr["ventas_precios_corrientes"].to_csv('precios_corrientes_clean.csv')
-
+data_clean_iqr["ventas_precios_constantes"].to_csv('precios_constantes_clean.csv')

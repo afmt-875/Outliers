@@ -10,19 +10,19 @@ valores_nulos = df.isnull().sum()
 
 
 fig = plt.figure(figsize =(7, 3))
-plt.hist(x=df["IVA"], color='red', rwidth=0.50)
-plt.title('Histograma de IVA con outliers')
-plt.xlabel('IVA')
+plt.hist(x=df["TOTAL SAT"], color='red', rwidth=0.50)
+plt.title('Histograma de Total SAT con outliers')
+plt.xlabel('Total SAT')
 plt.ylabel('Frecuencia')
 plt.show()
 
 fig = plt.figure(figsize =(5, 3))
-plt.boxplot(df["IVA"]) 
-plt.title("Outliers de IVA")
+plt.boxplot(df["TOTAL SAT"]) 
+plt.title("Outliers de Total SAT")
 plt.show()
 
 #Usar cuartiles
-y=df["IVA"]
+y=df["TOTAL SAT"]
 print(y)
 
 p25=y.quantile(0.25) 
@@ -42,18 +42,18 @@ data_clean_iqr= df[(y<Limite_Superior_iqr)&(y>Limite_Inferior_iqr)]
 print(data_clean_iqr.head(5))          
 
 fig = plt.figure(figsize =(5, 3))
-plt.boxplot(data_clean_iqr["IVA"]) 
-plt.title("IVA sin outliers ")
+plt.boxplot(data_clean_iqr["TOTAL SAT"]) 
+plt.title("Total SAT sin outliers ")
 plt.show()
 
 fig = plt.figure(figsize =(7, 3))
-plt.hist(x=data_clean_iqr["IVA"], color='blue', rwidth=0.50)
-plt.title('Histograma de IVA sin outliers')
-plt.xlabel('IVA')
+plt.hist(x=data_clean_iqr["TOTAL SAT"], color='blue', rwidth=0.50)
+plt.title('Histograma de Total SAT sin outliers')
+plt.xlabel('Total SAT')
 plt.ylabel('Frecuencia')
 plt.show()
 
-y=df["IVA"]
+y=df["TOTAL SAT"]
 Limite_Superior= y.mean() + 3*y.std()
 Limite_Inferior= y.mean() - 3*y.std()
 print("Limite superior permitido", Limite_Superior)
@@ -64,15 +64,15 @@ data_clean_de= df[(y<Limite_Superior)&(y>Limite_Inferior)]
 print(data_clean_de.head(5))          
 
 fig = plt.figure(figsize =(5, 3))
-plt.boxplot(data_clean_de["IVA"]) 
-plt.title("Outliers de IVA - DE")
+plt.boxplot(data_clean_de["TOTAL SAT"]) 
+plt.title("Outliers de Total SAT - DE")
 plt.show()
 
 fig = plt.figure(figsize =(7, 3))
-plt.hist(x=data_clean_de["IVA"], color='blue', rwidth=0.50)
-plt.title('Histograma de IVA sin outliers -DE')
-plt.xlabel('IVA')
+plt.hist(x=data_clean_de["TOTAL SAT"], color='blue', rwidth=0.50)
+plt.title('Histograma de Total SAT sin outliers -DE')
+plt.xlabel('Total SAT')
 plt.ylabel('Frecuencia')
 plt.show()
 
-data_clean_iqr["IVA"].to_csv('IVA_clean.xlsx')
+data_clean_iqr["TOTAL SAT"].to_csv('Total_SAT_clean.xlsx')
